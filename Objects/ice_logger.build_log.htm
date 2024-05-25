@@ -1,0 +1,210 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: shihab mohammad, na, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+E:\Desk\project_work\Keil\ice_logger\ice_logger.uvprojx
+Project File Date:  05/18/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+assembling startup_stm32g030xx.s...
+RTE/Device/STM32G030F6Px/system_stm32g0xx.c(286): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  286 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> RCC_CFGR_HPRE_Pos)];
+      |         ^~~~~~~~~~~~~
+1 warning generated.
+compiling system_stm32g0xx.c...
+main.c(2): warning: In file included from...
+./uart.h(12): warning: no newline at end of file [-Wnewline-eof]
+   12 | void    uart_send_num_float(float num);
+      |                                        ^
+main.c(3): warning: In file included from...
+./adc.h(6): warning: no previous prototype for function 'adc_enable_vreg' [-Wmissing-prototypes]
+    6 | void adc_enable_vreg(void){
+      |      ^
+./adc.h(6): note: declare 'static' if the function is not intended to be used outside of this translation unit
+    6 | void adc_enable_vreg(void){
+      | ^
+      | static 
+./adc.h(18): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   18 | void adc_init(){
+      |              ^
+      |               void
+./adc.h(68): warning: no previous prototype for function 'adc_read' [-Wmissing-prototypes]
+   68 | uint16_t adc_read(uint8_t channel){
+      |          ^
+./adc.h(68): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   68 | uint16_t adc_read(uint8_t channel){
+      | ^
+      | static 
+./adc.h(83): warning: no previous prototype for function 'adc_read_filtered' [-Wmissing-prototypes]
+   83 | uint16_t adc_read_filtered(uint8_t channel){
+      |          ^
+./adc.h(83): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   83 | uint16_t adc_read_filtered(uint8_t channel){
+      | ^
+      | static 
+./adc.h(94): warning: no newline at end of file [-Wnewline-eof]
+   94 |                 
+      |                 ^
+./adc.h(89): warning: no previous prototype for function 'adc_read_Sx' [-Wmissing-prototypes]
+   89 | uint16_t adc_read_Sx(uint8_t sensor){
+      |          ^
+./adc.h(89): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   89 | uint16_t adc_read_Sx(uint8_t sensor){
+      | ^
+      | static 
+main.c(5): warning: no previous prototype for function 'adctotemp' [-Wmissing-prototypes]
+    5 | long adctotemp(long adc){
+      |      ^
+main.c(5): note: declare 'static' if the function is not intended to be used outside of this translation unit
+    5 | long adctotemp(long adc){
+      | ^
+      | static 
+main.c(50): warning: no previous prototype for function 'lever_stat' [-Wmissing-prototypes]
+   50 | void lever_stat(void){
+      |      ^
+main.c(50): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   50 | void lever_stat(void){
+      | ^
+      | static 
+main.c(72): warning: implicit conversion loses integer precision: 'long' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+   72 |                                 temp = adctotemp(adc_value1);
+      |                                      ~ ^~~~~~~~~~~~~~~~~~~~~
+main.c(64): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   64 |                 uint16_t adc_value1=0;
+      |                          ^
+main.c(3): warning: In file included from...
+./adc.h(91): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   91 |         return adc_read_filtered(index[sensor]);
+      |                                  ^~~~~
+12 warnings generated.
+compiling main.c...
+uart.c(2): warning: In file included from...
+./uart.h(12): warning: no newline at end of file [-Wnewline-eof]
+   12 | void    uart_send_num_float(float num);
+      |                                        ^
+uart.c(18): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   18 |           GPIOA->MODER &=~(1<<18);    
+      |                        ~~^~~~~~~~
+uart.c(66): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   66 |     int32_t tnum=num;
+      |             ^
+uart.c(94): warning: non-void function does not return a value [-Wreturn-type]
+   94 | }
+      | ^
+uart.c(112): warning: unused variable 'div' [-Wunused-variable]
+  112 |         int div = 512;
+      |             ^~~
+uart.c(176): warning: no newline at end of file [-Wnewline-eof]
+  176 | }
+      |  ^
+uart.c(131): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  131 |     char arr[10] = "0123456789";
+      |          ^
+uart.c(145): warning: implicit conversion loses integer precision: 'int64_t' (aka 'long long') to 'int32_t' (aka 'int') [-Wshorten-64-to-32]
+  145 |     int32_t tnum=num;
+      |             ~~~~ ^~~
+uart.c(22): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   22 |     GPIOA->AFR[1] &= ~GPIO_AFRH_AFSEL9_Msk;
+      |     ^~~~~~~~~~
+C:/Users/Administrator/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.5.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include\stm32g030xx.h(631): note: expanded from macro 'GPIOA'
+  631 | #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
+      |                             ^
+uart.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   23 |     GPIOA->AFR[1] |= (1 << GPIO_AFRH_AFSEL9_Pos);
+      |     ^~~~~~~~~~
+C:/Users/Administrator/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.5.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include\stm32g030xx.h(631): note: expanded from macro 'GPIOA'
+  631 | #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
+      |                             ^
+uart.c(44): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   44 |         uart_char(*data++);
+      |                    ^~~~
+uart.c(80): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   80 |         num_arr[ii] = arr[ind];
+      |         ^~~~~~~
+uart.c(80): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   80 |         num_arr[ii] = arr[ind];
+      |                       ^~~
+uart.c(87): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   87 |     num_arr[i] = '\0'; // Null-terminate the string
+      |     ^~~~~~~
+uart.c(99): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   99 |                 uart_send_num(arr[i]);
+      |                               ^~~
+uart.c(115): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  115 |                 bin_store[9-i] = (num%2);
+      |                 ^~~~~~~~~
+uart.c(119): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  119 |                 uart_send_num(bin_store[i]);
+      |                               ^~~~~~~~~
+uart.c(159): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  159 |         num_arr[ii] = arr[ind];
+      |         ^~~~~~~
+uart.c(159): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  159 |         num_arr[ii] = arr[ind];
+      |                       ^~~
+uart.c(166): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  166 |     num_arr[i] = '\0'; // Null-terminate the string
+      |     ^~~~~~~
+uart.c(171): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  171 |                         uart_char(num_arr[it]);
+      |                                   ^~~~~~~
+21 warnings generated.
+compiling uart.c...
+linking...
+Program Size: Code=2548 RO-data=260 RW-data=0 ZI-data=1632  
+".\Objects\ice_logger.axf" - 0 Error(s), 34 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.0.0.pack
+                ARM::CMSIS@6.0.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.0.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32G0xx_DFP.1.5.0.pack
+                Keil::STM32G0xx_DFP@1.5.0
+                STMicroelectronics STM32G0 Series Device Support
+   * Component: Startup Version: 1.4.2
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/Administrator/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+  C:/Users/Administrator/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.5.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.0.0
+
+   * Component: Keil::Device:Startup@1.4.2
+      Source file:   Drivers/CMSIS/Device/ST/STM32G0xx/Source/Templates/arm/startup_stm32g030xx.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32G0xx/Include/stm32g0xx.h
+      Source file:   MDK/Device/Source/ARM/STM32G0x0_SB_OPT.s
+      Source file:   MDK/Device/Source/ARM/STM32G0x0_DB_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32G0xx/Source/Templates/system_stm32g0xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
