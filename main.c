@@ -1,6 +1,7 @@
 #include "stm32g030xx.h"
 #include "uart.h"
 #include "adc.h"
+#include "timer.h"
 
 long adctotemp(long adc){
     long T;
@@ -53,6 +54,55 @@ void lever_stat(void){
 
 
 
+void measurmnt(void){
+	uint16_t lever=0;
+	uint16_t rotation=0;
+	uint16_t valve=0;
+	
+	lever = adc_read_filtered(3);
+	rotation =  adc_read_filtered(4);
+	
+	valve = adc_read_filtered(5);
+	
+	
+	
+	if (lever <= 4000){
+		lever = lever/10;
+		uart_send_char("Lever: ");
+		uart_send_num(lever);
+		uart_send_char("\r\n");
+	}
+	if (rotation <= 4000){
+		rotation = rotation/10;
+		uart_send_char("Rotation: ");
+		uart_send_num(rotation);
+		uart_send_char("\r\n");
+	}
+	if (valve >= 3000){
+		valve = valve/10;
+		uart_send_char("Valve: ");
+		uart_send_num(valve);
+		uart_send_char("\r\n");
+	}
+}
+
+
+volatile uint16_t updatedValue = 0;
+
+void TIM1_BRK_UP_TRG_COM_IRQHandler(void) {
+    if (TIM1->SR & TIM_SR_UIF) {
+        TIM1->SR &= ~TIM_SR_UIF;
+				uint16_t adc_value1=0;
+				uint16_t temp=0;
+				adc_value1 = adc_read_filtered(2);
+				temp = adctotemp(adc_value1);
+				uart_send_char("Temp: ");
+				uart_send_num(temp);
+				uart_send_char("\r\n");
+    }
+}
+
+
 int main(void) {
     uart_Init(38400);    // Initialize UART with desired baud rate
 	  uart_send_char("\r\nDebug Started\r\n");
@@ -60,43 +110,12 @@ int main(void) {
 			 __NOP();
 		}
 		adc_init();
+		timer_Init(0xFFF, 0x1E86);
 		
-		uint16_t adc_value1=0;
-		uint16_t lever=0;
-		uint16_t rotation=0;
-		uint16_t valve=0;
 		
 		uint16_t temp=0;
     while (1) {
-				adc_value1 = adc_read_filtered(2);
-				temp = adctotemp(adc_value1);
-			
-				lever = adc_read_filtered(3);
-			
-				rotation =  adc_read_filtered(4);
-			
-				valve = adc_read_filtered(5);
-			
-				
-				
-				uart_send_char("Temp: ");
-				uart_send_num(temp);
-				uart_send_char("\r\n");
-			
-				uart_send_char("Lever: ");
-				uart_send_num(lever);
-				uart_send_char("\r\n");
-			
-				uart_send_char("Rotation: ");
-				uart_send_num(rotation);
-				uart_send_char("\r\n");
-			
-				uart_send_char("Valve: ");
-				uart_send_num(valve);
-				uart_send_char("\r\n");
-				
-				uart_send_char("\r\n");
-				
+				measurmnt();
 				for(uint32_t i=0;i<100000;i++){
 					__NOP();
 				}
