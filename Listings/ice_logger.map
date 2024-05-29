@@ -15,21 +15,15 @@ Section Cross References
     main.o(.ARM.exidx.text.adctotemp) refers to main.o(.text.adctotemp) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.lever_stat) refers to main.o(.text.lever_stat) for [Anonymous Symbol]
     main.o(.text.measurmnt) refers to main.o(.text.adc_read_filtered) for adc_read_filtered
+    main.o(.text.measurmnt) refers to main.o(.text.adctotemp) for adctotemp
     main.o(.text.measurmnt) refers to aeabi_sdiv.o(.text) for __aeabi_uidiv
     main.o(.text.measurmnt) refers to uart.o(.text.uart_send_char) for uart_send_char
     main.o(.text.measurmnt) refers to uart.o(.text.uart_send_num) for uart_send_num
     main.o(.text.measurmnt) refers to main.o(.rodata.str1.1) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.measurmnt) refers to main.o(.text.measurmnt) for [Anonymous Symbol]
-    main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to main.o(.text.adc_read_filtered) for adc_read_filtered
-    main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to main.o(.text.adctotemp) for adctotemp
-    main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to uart.o(.text.uart_send_char) for uart_send_char
-    main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to uart.o(.text.uart_send_num) for uart_send_num
-    main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to main.o(.rodata.str1.1) for [Anonymous Symbol]
-    main.o(.ARM.exidx.text.TIM1_BRK_UP_TRG_COM_IRQHandler) refers to main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) for [Anonymous Symbol]
     main.o(.text.main) refers to uart.o(.text.uart_Init) for uart_Init
     main.o(.text.main) refers to uart.o(.text.uart_send_char) for uart_send_char
     main.o(.text.main) refers to main.o(.text.adc_init) for adc_init
-    main.o(.text.main) refers to timer.o(.text.timer_Init) for timer_Init
     main.o(.text.main) refers to main.o(.text.measurmnt) for measurmnt
     main.o(.text.main) refers to main.o(.rodata.str1.1) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
@@ -67,7 +61,6 @@ Section Cross References
     startup_stm32g030xx.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32g030xx.o(RESET) refers to startup_stm32g030xx.o(STACK) for __initial_sp
     startup_stm32g030xx.o(RESET) refers to startup_stm32g030xx.o(.text) for Reset_Handler
-    startup_stm32g030xx.o(RESET) refers to main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler) for TIM1_BRK_UP_TRG_COM_IRQHandler
     startup_stm32g030xx.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32g030xx.o(.text) refers to system_stm32g0xx.o(.text.SystemInit) for SystemInit
     startup_stm32g030xx.o(.text) refers to __main.o(!!!main) for __main
@@ -211,7 +204,6 @@ Removing Unused input sections from the image.
     Removing main.o(.text.lever_stat), (2 bytes).
     Removing main.o(.ARM.exidx.text.lever_stat), (8 bytes).
     Removing main.o(.ARM.exidx.text.measurmnt), (8 bytes).
-    Removing main.o(.ARM.exidx.text.TIM1_BRK_UP_TRG_COM_IRQHandler), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
     Removing main.o(.rodata..L__const.adc_read_Sx.index), (10 bytes).
     Removing main.o(.bss.updatedValue), (2 bytes).
@@ -233,8 +225,11 @@ Removing Unused input sections from the image.
     Removing uart.o(.rodata.str1.1), (3 bytes).
     Removing uart.o(.rodata..L__const.uart_send_num_float.arr), (10 bytes).
     Removing timer.o(.text), (0 bytes).
+    Removing timer.o(.text.timer_Init), (184 bytes).
     Removing timer.o(.ARM.exidx.text.timer_Init), (8 bytes).
+    Removing timer.o(.text.__NVIC_SetPriority), (132 bytes).
     Removing timer.o(.ARM.exidx.text.__NVIC_SetPriority), (8 bytes).
+    Removing timer.o(.text.__NVIC_EnableIRQ), (44 bytes).
     Removing timer.o(.ARM.exidx.text.__NVIC_EnableIRQ), (8 bytes).
     Removing timer.o(.text.timer1_ouput), (12 bytes).
     Removing timer.o(.ARM.exidx.text.timer1_ouput), (8 bytes).
@@ -248,7 +243,7 @@ Removing Unused input sections from the image.
     Removing system_stm32g0xx.o(.rodata.AHBPrescTable), (64 bytes).
     Removing system_stm32g0xx.o(.rodata.APBPrescTable), (32 bytes).
 
-47 unused section(s) (total 1317 bytes) removed from the image.
+49 unused section(s) (total 1669 bytes) removed from the image.
 
 ==============================================================================
 
@@ -385,97 +380,81 @@ Image Symbol Table
     .text                                    0x08000370   Section        2  use_no_semi.o(.text)
     [Anonymous Symbol]                       0x08000372   Section        0  system_stm32g0xx.o(.text.SystemInit)
     .text                                    0x08000372   Section        0  indicate_semi.o(.text)
-    [Anonymous Symbol]                       0x08000374   Section        0  main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler)
-    __arm_cp.8_0                             0x080003cc   Number         4  main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler)
-    __arm_cp.8_1                             0x080003d0   Number         4  main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler)
-    __arm_cp.8_2                             0x080003d4   Number         4  main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler)
-    __NVIC_EnableIRQ                         0x080003d9   Thumb Code    40  timer.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x080003d8   Section        0  timer.o(.text.__NVIC_EnableIRQ)
-    __arm_cp.2_0                             0x08000400   Number         4  timer.o(.text.__NVIC_EnableIRQ)
-    __NVIC_SetPriority                       0x08000405   Thumb Code   124  timer.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08000404   Section        0  timer.o(.text.__NVIC_SetPriority)
-    __arm_cp.1_0                             0x08000480   Number         4  timer.o(.text.__NVIC_SetPriority)
-    __arm_cp.1_1                             0x08000484   Number         4  timer.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08000488   Section        0  main.o(.text.adc_enable_vreg)
-    [Anonymous Symbol]                       0x080004e0   Section        0  main.o(.text.adc_init)
-    __arm_cp.1_0                             0x08000640   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_1                             0x08000644   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_2                             0x08000648   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_3                             0x0800064c   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_4                             0x08000650   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_5                             0x08000654   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_8                             0x08000658   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_9                             0x0800065c   Number         4  main.o(.text.adc_init)
-    __arm_cp.1_10                            0x08000660   Number         4  main.o(.text.adc_init)
-    [Anonymous Symbol]                       0x08000664   Section        0  main.o(.text.adc_read)
-    __arm_cp.2_0                             0x080006f0   Number         4  main.o(.text.adc_read)
-    __arm_cp.2_1                             0x080006f4   Number         4  main.o(.text.adc_read)
-    __arm_cp.2_2                             0x080006f8   Number         4  main.o(.text.adc_read)
-    __arm_cp.2_3                             0x080006fc   Number         4  main.o(.text.adc_read)
-    [Anonymous Symbol]                       0x08000700   Section        0  main.o(.text.adc_read_filtered)
-    [Anonymous Symbol]                       0x08000720   Section        0  main.o(.text.adctotemp)
-    __arm_cp.5_0                             0x08000860   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_1                             0x08000864   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_2                             0x08000868   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_3                             0x0800086c   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_4                             0x08000870   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_5                             0x08000874   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_6                             0x08000878   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_7                             0x0800087c   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_8                             0x08000880   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_9                             0x08000884   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_10                            0x08000888   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_11                            0x0800088c   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_12                            0x08000890   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_13                            0x08000894   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_14                            0x08000898   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_15                            0x0800089c   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_16                            0x080008a0   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_17                            0x080008a4   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_18                            0x080008a8   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_19                            0x080008ac   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_20                            0x080008b0   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_21                            0x080008b4   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_22                            0x080008b8   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_23                            0x080008bc   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_24                            0x080008c0   Number         4  main.o(.text.adctotemp)
-    __arm_cp.5_25                            0x080008c4   Number         4  main.o(.text.adctotemp)
-    [Anonymous Symbol]                       0x080008c8   Section        0  main.o(.text.main)
-    __arm_cp.9_0                             0x08000934   Number         4  main.o(.text.main)
-    __arm_cp.9_1                             0x08000938   Number         4  main.o(.text.main)
-    __arm_cp.9_2                             0x0800093c   Number         4  main.o(.text.main)
-    __arm_cp.9_3                             0x08000940   Number         4  main.o(.text.main)
-    __arm_cp.9_4                             0x08000944   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x08000948   Section        0  main.o(.text.measurmnt)
-    __arm_cp.7_0                             0x08000a20   Number         4  main.o(.text.measurmnt)
-    __arm_cp.7_1                             0x08000a24   Number         4  main.o(.text.measurmnt)
-    __arm_cp.7_2                             0x08000a28   Number         4  main.o(.text.measurmnt)
-    __arm_cp.7_3                             0x08000a2c   Number         4  main.o(.text.measurmnt)
-    __arm_cp.7_4                             0x08000a30   Number         4  main.o(.text.measurmnt)
-    [Anonymous Symbol]                       0x08000a34   Section        0  timer.o(.text.timer_Init)
-    __arm_cp.0_1                             0x08000ad4   Number         4  timer.o(.text.timer_Init)
-    __arm_cp.0_2                             0x08000ad8   Number         4  timer.o(.text.timer_Init)
-    __arm_cp.0_3                             0x08000adc   Number         4  timer.o(.text.timer_Init)
-    __arm_cp.0_4                             0x08000ae0   Number         4  timer.o(.text.timer_Init)
-    __arm_cp.0_5                             0x08000ae4   Number         4  timer.o(.text.timer_Init)
-    [Anonymous Symbol]                       0x08000ae8   Section        0  uart.o(.text.uart_Init)
-    __arm_cp.0_0                             0x08000b70   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_1                             0x08000b74   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_2                             0x08000b78   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_3                             0x08000b7c   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_4                             0x08000b80   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_5                             0x08000b84   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_6                             0x08000b88   Number         4  uart.o(.text.uart_Init)
-    __arm_cp.0_7                             0x08000b8c   Number         4  uart.o(.text.uart_Init)
-    [Anonymous Symbol]                       0x08000b90   Section        0  uart.o(.text.uart_char)
-    __arm_cp.1_0                             0x08000bb4   Number         4  uart.o(.text.uart_char)
-    __arm_cp.1_1                             0x08000bb8   Number         4  uart.o(.text.uart_char)
-    [Anonymous Symbol]                       0x08000bbc   Section        0  uart.o(.text.uart_send_char)
-    [Anonymous Symbol]                       0x08000be0   Section        0  uart.o(.text.uart_send_num)
-    __arm_cp.3_0                             0x08000cb8   Number         4  uart.o(.text.uart_send_num)
-    __arm_cp.3_1                             0x08000cbc   Number         4  uart.o(.text.uart_send_num)
-    __arm_cp.3_2                             0x08000cc0   Number         4  uart.o(.text.uart_send_num)
-    [Anonymous Symbol]                       0x08000cc4   Section        0  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08000374   Section        0  main.o(.text.adc_enable_vreg)
+    [Anonymous Symbol]                       0x080003cc   Section        0  main.o(.text.adc_init)
+    __arm_cp.1_0                             0x0800052c   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_1                             0x08000530   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_2                             0x08000534   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_3                             0x08000538   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_4                             0x0800053c   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_5                             0x08000540   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_8                             0x08000544   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_9                             0x08000548   Number         4  main.o(.text.adc_init)
+    __arm_cp.1_10                            0x0800054c   Number         4  main.o(.text.adc_init)
+    [Anonymous Symbol]                       0x08000550   Section        0  main.o(.text.adc_read)
+    __arm_cp.2_0                             0x080005dc   Number         4  main.o(.text.adc_read)
+    __arm_cp.2_1                             0x080005e0   Number         4  main.o(.text.adc_read)
+    __arm_cp.2_2                             0x080005e4   Number         4  main.o(.text.adc_read)
+    __arm_cp.2_3                             0x080005e8   Number         4  main.o(.text.adc_read)
+    [Anonymous Symbol]                       0x080005ec   Section        0  main.o(.text.adc_read_filtered)
+    [Anonymous Symbol]                       0x0800060c   Section        0  main.o(.text.adctotemp)
+    __arm_cp.5_0                             0x0800074c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_1                             0x08000750   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_2                             0x08000754   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_3                             0x08000758   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_4                             0x0800075c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_5                             0x08000760   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_6                             0x08000764   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_7                             0x08000768   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_8                             0x0800076c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_9                             0x08000770   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_10                            0x08000774   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_11                            0x08000778   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_12                            0x0800077c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_13                            0x08000780   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_14                            0x08000784   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_15                            0x08000788   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_16                            0x0800078c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_17                            0x08000790   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_18                            0x08000794   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_19                            0x08000798   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_20                            0x0800079c   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_21                            0x080007a0   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_22                            0x080007a4   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_23                            0x080007a8   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_24                            0x080007ac   Number         4  main.o(.text.adctotemp)
+    __arm_cp.5_25                            0x080007b0   Number         4  main.o(.text.adctotemp)
+    [Anonymous Symbol]                       0x080007b4   Section        0  main.o(.text.main)
+    __arm_cp.8_0                             0x08000818   Number         4  main.o(.text.main)
+    __arm_cp.8_1                             0x0800081c   Number         4  main.o(.text.main)
+    __arm_cp.8_2                             0x08000820   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x08000824   Section        0  main.o(.text.measurmnt)
+    __arm_cp.7_0                             0x08000974   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_1                             0x08000978   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_2                             0x0800097c   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_3                             0x08000980   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_4                             0x08000984   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_5                             0x08000988   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_6                             0x0800098c   Number         4  main.o(.text.measurmnt)
+    __arm_cp.7_7                             0x08000990   Number         4  main.o(.text.measurmnt)
+    [Anonymous Symbol]                       0x08000994   Section        0  uart.o(.text.uart_Init)
+    __arm_cp.0_0                             0x08000a1c   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_1                             0x08000a20   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_2                             0x08000a24   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_3                             0x08000a28   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_4                             0x08000a2c   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_5                             0x08000a30   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_6                             0x08000a34   Number         4  uart.o(.text.uart_Init)
+    __arm_cp.0_7                             0x08000a38   Number         4  uart.o(.text.uart_Init)
+    [Anonymous Symbol]                       0x08000a3c   Section        0  uart.o(.text.uart_char)
+    __arm_cp.1_0                             0x08000a60   Number         4  uart.o(.text.uart_char)
+    __arm_cp.1_1                             0x08000a64   Number         4  uart.o(.text.uart_char)
+    [Anonymous Symbol]                       0x08000a68   Section        0  uart.o(.text.uart_send_char)
+    [Anonymous Symbol]                       0x08000a8c   Section        0  uart.o(.text.uart_send_num)
+    __arm_cp.3_0                             0x08000b64   Number         4  uart.o(.text.uart_send_num)
+    __arm_cp.3_1                             0x08000b68   Number         4  uart.o(.text.uart_send_num)
+    __arm_cp.3_2                             0x08000b6c   Number         4  uart.o(.text.uart_send_num)
+    [Anonymous Symbol]                       0x08000b70   Section        0  main.o(.rodata.str1.1)
     .bss                                     0x20000000   Section       96  libspace.o(.bss)
     Heap_Mem                                 0x20000060   Data         512  startup_stm32g030xx.o(HEAP)
     HEAP                                     0x20000060   Section      512  startup_stm32g030xx.o(HEAP)
@@ -592,6 +571,7 @@ Image Symbol Table
     TIM14_IRQHandler                         0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
     TIM16_IRQHandler                         0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
     TIM17_IRQHandler                         0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
+    TIM1_BRK_UP_TRG_COM_IRQHandler           0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
     TIM1_CC_IRQHandler                       0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
     TIM3_IRQHandler                          0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
     USART1_IRQHandler                        0x08000177   Thumb Code     0  startup_stm32g030xx.o(.text)
@@ -615,21 +595,19 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x08000371   Thumb Code     2  use_no_semi.o(.text)
     SystemInit                               0x08000373   Thumb Code     2  system_stm32g0xx.o(.text.SystemInit)
     __semihosting_library_function           0x08000373   Thumb Code     0  indicate_semi.o(.text)
-    TIM1_BRK_UP_TRG_COM_IRQHandler           0x08000375   Thumb Code    88  main.o(.text.TIM1_BRK_UP_TRG_COM_IRQHandler)
-    adc_enable_vreg                          0x08000489   Thumb Code    88  main.o(.text.adc_enable_vreg)
-    adc_init                                 0x080004e1   Thumb Code   352  main.o(.text.adc_init)
-    adc_read                                 0x08000665   Thumb Code   140  main.o(.text.adc_read)
-    adc_read_filtered                        0x08000701   Thumb Code    30  main.o(.text.adc_read_filtered)
-    adctotemp                                0x08000721   Thumb Code   320  main.o(.text.adctotemp)
-    main                                     0x080008c9   Thumb Code   108  main.o(.text.main)
-    measurmnt                                0x08000949   Thumb Code   216  main.o(.text.measurmnt)
-    timer_Init                               0x08000a35   Thumb Code   160  timer.o(.text.timer_Init)
-    uart_Init                                0x08000ae9   Thumb Code   136  uart.o(.text.uart_Init)
-    uart_char                                0x08000b91   Thumb Code    36  uart.o(.text.uart_char)
-    uart_send_char                           0x08000bbd   Thumb Code    36  uart.o(.text.uart_send_char)
-    uart_send_num                            0x08000be1   Thumb Code   216  uart.o(.text.uart_send_num)
-    Region$$Table$$Base                      0x08000cf8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000d08   Number         0  anon$$obj.o(Region$$Table)
+    adc_enable_vreg                          0x08000375   Thumb Code    88  main.o(.text.adc_enable_vreg)
+    adc_init                                 0x080003cd   Thumb Code   352  main.o(.text.adc_init)
+    adc_read                                 0x08000551   Thumb Code   140  main.o(.text.adc_read)
+    adc_read_filtered                        0x080005ed   Thumb Code    30  main.o(.text.adc_read_filtered)
+    adctotemp                                0x0800060d   Thumb Code   320  main.o(.text.adctotemp)
+    main                                     0x080007b5   Thumb Code   100  main.o(.text.main)
+    measurmnt                                0x08000825   Thumb Code   336  main.o(.text.measurmnt)
+    uart_Init                                0x08000995   Thumb Code   136  uart.o(.text.uart_Init)
+    uart_char                                0x08000a3d   Thumb Code    36  uart.o(.text.uart_char)
+    uart_send_char                           0x08000a69   Thumb Code    36  uart.o(.text.uart_send_char)
+    uart_send_num                            0x08000a8d   Thumb Code   216  uart.o(.text.uart_send_num)
+    Region$$Table$$Base                      0x08000ba0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000bb0   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x20000000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000060   Data           0  libspace.o(.bss)
 
@@ -641,103 +619,99 @@ Memory Map of the image
 
   Image Entry point : 0x08000165
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00000d08, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00000bb0, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000d08, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000bb0, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000c0   Data   RO           77    RESET               startup_stm32g030xx.o
-    0x080000c0   0x080000c0   0x00000008   Code   RO          108  * !!!main             c_p.l(__main.o)
-    0x080000c8   0x080000c8   0x00000054   Code   RO          296    !!!scatter          c_p.l(__scatter.o)
-    0x0800011c   0x0800011c   0x00000002   Code   RO          297    !!handler_null      c_p.l(__scatter.o)
+    0x08000000   0x08000000   0x000000c0   Data   RO           75    RESET               startup_stm32g030xx.o
+    0x080000c0   0x080000c0   0x00000008   Code   RO          106  * !!!main             c_p.l(__main.o)
+    0x080000c8   0x080000c8   0x00000054   Code   RO          294    !!!scatter          c_p.l(__scatter.o)
+    0x0800011c   0x0800011c   0x00000002   Code   RO          295    !!handler_null      c_p.l(__scatter.o)
     0x0800011e   0x0800011e   0x00000002   PAD
-    0x08000120   0x08000120   0x0000001c   Code   RO          300    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x0800013c   0x0800013c   0x00000002   Code   RO          157    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          171    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          173    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          175    .ARM.Collect$$libinit$$00000006  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          178    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          180    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          182    .ARM.Collect$$libinit$$00000010  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          185    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          187    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          189    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          191    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          193    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          195    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          197    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          199    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          201    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          203    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          205    .ARM.Collect$$libinit$$00000027  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          209    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          211    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          213    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000000   Code   RO          215    .ARM.Collect$$libinit$$00000034  c_p.l(libinit2.o)
-    0x0800013e   0x0800013e   0x00000002   Code   RO          216    .ARM.Collect$$libinit$$00000035  c_p.l(libinit2.o)
-    0x08000140   0x08000140   0x00000002   Code   RO          251    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          279    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          281    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          284    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          287    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          289    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000000   Code   RO          292    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x08000142   0x08000142   0x00000002   Code   RO          293    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x08000144   0x08000144   0x00000000   Code   RO          114    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x08000144   0x08000144   0x00000000   Code   RO          127    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x08000144   0x08000144   0x00000006   Code   RO          139    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0800014a   0x0800014a   0x00000000   Code   RO          129    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0800014a   0x0800014a   0x00000004   Code   RO          130    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x0800014e   0x0800014e   0x00000000   Code   RO          132    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x0800014e   0x0800014e   0x00000008   Code   RO          133    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x08000156   0x08000156   0x00000002   Code   RO          162    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x08000158   0x08000158   0x00000000   Code   RO          222    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x08000158   0x08000158   0x00000004   Code   RO          223    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x0800015c   0x0800015c   0x00000006   Code   RO          224    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x08000120   0x08000120   0x0000001c   Code   RO          298    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x0800013c   0x0800013c   0x00000002   Code   RO          155    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          169    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          171    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          173    .ARM.Collect$$libinit$$00000006  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          176    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          178    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          180    .ARM.Collect$$libinit$$00000010  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          183    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          185    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          187    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          189    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          191    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          193    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          195    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          197    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          199    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          201    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          203    .ARM.Collect$$libinit$$00000027  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          207    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          209    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          211    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000000   Code   RO          213    .ARM.Collect$$libinit$$00000034  c_p.l(libinit2.o)
+    0x0800013e   0x0800013e   0x00000002   Code   RO          214    .ARM.Collect$$libinit$$00000035  c_p.l(libinit2.o)
+    0x08000140   0x08000140   0x00000002   Code   RO          249    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          277    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          279    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          282    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          285    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          287    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000000   Code   RO          290    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x08000142   0x08000142   0x00000002   Code   RO          291    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x08000144   0x08000144   0x00000000   Code   RO          112    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x08000144   0x08000144   0x00000000   Code   RO          125    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x08000144   0x08000144   0x00000006   Code   RO          137    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0800014a   0x0800014a   0x00000000   Code   RO          127    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0800014a   0x0800014a   0x00000004   Code   RO          128    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x0800014e   0x0800014e   0x00000000   Code   RO          130    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x0800014e   0x0800014e   0x00000008   Code   RO          131    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x08000156   0x08000156   0x00000002   Code   RO          160    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x08000158   0x08000158   0x00000000   Code   RO          220    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x08000158   0x08000158   0x00000004   Code   RO          221    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x0800015c   0x0800015c   0x00000006   Code   RO          222    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x08000162   0x08000162   0x00000002   PAD
-    0x08000164   0x08000164   0x00000038   Code   RO           78  * .text               startup_stm32g030xx.o
-    0x0800019c   0x0800019c   0x0000016c   Code   RO          102    .text               c_p.l(aeabi_sdiv.o)
-    0x08000308   0x08000308   0x00000006   Code   RO          106    .text               c_p.l(heapauxi.o)
-    0x0800030e   0x0800030e   0x0000003e   Code   RO          143    .text               c_p.l(sys_stackheap_outer.o)
-    0x0800034c   0x0800034c   0x00000010   Code   RO          146    .text               c_p.l(exit.o)
-    0x0800035c   0x0800035c   0x00000008   Code   RO          158    .text               c_p.l(libspace.o)
-    0x08000364   0x08000364   0x0000000c   Code   RO          217    .text               c_p.l(sys_exit.o)
-    0x08000370   0x08000370   0x00000002   Code   RO          240    .text               c_p.l(use_no_semi.o)
-    0x08000372   0x08000372   0x00000000   Code   RO          242    .text               c_p.l(indicate_semi.o)
-    0x08000372   0x08000372   0x00000002   Code   RO           85    .text.SystemInit    system_stm32g0xx.o
-    0x08000374   0x08000374   0x00000064   Code   RO           18    .text.TIM1_BRK_UP_TRG_COM_IRQHandler  main.o
-    0x080003d8   0x080003d8   0x0000002c   Code   RO           63    .text.__NVIC_EnableIRQ  timer.o
-    0x08000404   0x08000404   0x00000084   Code   RO           61    .text.__NVIC_SetPriority  timer.o
-    0x08000488   0x08000488   0x00000058   Code   RO            2    .text.adc_enable_vreg  main.o
-    0x080004e0   0x080004e0   0x00000184   Code   RO            4    .text.adc_init      main.o
-    0x08000664   0x08000664   0x0000009c   Code   RO            6    .text.adc_read      main.o
-    0x08000700   0x08000700   0x0000001e   Code   RO            8    .text.adc_read_filtered  main.o
-    0x0800071e   0x0800071e   0x00000002   PAD
-    0x08000720   0x08000720   0x000001a8   Code   RO           12    .text.adctotemp     main.o
-    0x080008c8   0x080008c8   0x00000080   Code   RO           20    .text.main          main.o
-    0x08000948   0x08000948   0x000000ec   Code   RO           16    .text.measurmnt     main.o
-    0x08000a34   0x08000a34   0x000000b4   Code   RO           59    .text.timer_Init    timer.o
-    0x08000ae8   0x08000ae8   0x000000a8   Code   RO           33    .text.uart_Init     uart.o
-    0x08000b90   0x08000b90   0x0000002c   Code   RO           35    .text.uart_char     uart.o
-    0x08000bbc   0x08000bbc   0x00000024   Code   RO           37    .text.uart_send_char  uart.o
-    0x08000be0   0x08000be0   0x000000e4   Code   RO           39    .text.uart_send_num  uart.o
-    0x08000cc4   0x08000cc4   0x00000034   Data   RO           23    .rodata.str1.1      main.o
-    0x08000cf8   0x08000cf8   0x00000010   Data   RO          295    Region$$Table       anon$$obj.o
+    0x08000164   0x08000164   0x00000038   Code   RO           76  * .text               startup_stm32g030xx.o
+    0x0800019c   0x0800019c   0x0000016c   Code   RO          100    .text               c_p.l(aeabi_sdiv.o)
+    0x08000308   0x08000308   0x00000006   Code   RO          104    .text               c_p.l(heapauxi.o)
+    0x0800030e   0x0800030e   0x0000003e   Code   RO          141    .text               c_p.l(sys_stackheap_outer.o)
+    0x0800034c   0x0800034c   0x00000010   Code   RO          144    .text               c_p.l(exit.o)
+    0x0800035c   0x0800035c   0x00000008   Code   RO          156    .text               c_p.l(libspace.o)
+    0x08000364   0x08000364   0x0000000c   Code   RO          215    .text               c_p.l(sys_exit.o)
+    0x08000370   0x08000370   0x00000002   Code   RO          238    .text               c_p.l(use_no_semi.o)
+    0x08000372   0x08000372   0x00000000   Code   RO          240    .text               c_p.l(indicate_semi.o)
+    0x08000372   0x08000372   0x00000002   Code   RO           83    .text.SystemInit    system_stm32g0xx.o
+    0x08000374   0x08000374   0x00000058   Code   RO            2    .text.adc_enable_vreg  main.o
+    0x080003cc   0x080003cc   0x00000184   Code   RO            4    .text.adc_init      main.o
+    0x08000550   0x08000550   0x0000009c   Code   RO            6    .text.adc_read      main.o
+    0x080005ec   0x080005ec   0x0000001e   Code   RO            8    .text.adc_read_filtered  main.o
+    0x0800060a   0x0800060a   0x00000002   PAD
+    0x0800060c   0x0800060c   0x000001a8   Code   RO           12    .text.adctotemp     main.o
+    0x080007b4   0x080007b4   0x00000070   Code   RO           18    .text.main          main.o
+    0x08000824   0x08000824   0x00000170   Code   RO           16    .text.measurmnt     main.o
+    0x08000994   0x08000994   0x000000a8   Code   RO           31    .text.uart_Init     uart.o
+    0x08000a3c   0x08000a3c   0x0000002c   Code   RO           33    .text.uart_char     uart.o
+    0x08000a68   0x08000a68   0x00000024   Code   RO           35    .text.uart_send_char  uart.o
+    0x08000a8c   0x08000a8c   0x000000e4   Code   RO           37    .text.uart_send_num  uart.o
+    0x08000b70   0x08000b70   0x00000030   Data   RO           21    .rodata.str1.1      main.o
+    0x08000ba0   0x08000ba0   0x00000010   Data   RO          293    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000d08, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000bb0, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x08000d08, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x08000bb0, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000        -       0x00000060   Zero   RW          159    .bss                c_p.l(libspace.o)
-    0x20000060        -       0x00000200   Zero   RW           76    HEAP                startup_stm32g030xx.o
-    0x20000260        -       0x00000400   Zero   RW           75    STACK               startup_stm32g030xx.o
+    0x20000000        -       0x00000060   Zero   RW          157    .bss                c_p.l(libspace.o)
+    0x20000060        -       0x00000200   Zero   RW           74    HEAP                startup_stm32g030xx.o
+    0x20000260        -       0x00000400   Zero   RW           73    STACK               startup_stm32g030xx.o
 
 
 ==============================================================================
@@ -747,14 +721,13 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1550        208         52          0          0       5152   main.o
+      1566        200         48          0          0       4586   main.o
         56         26        192          0       1536        656   startup_stm32g030xx.o
          2          0          0          0          0       1948   system_stm32g0xx.o
-       356         32          0          0          0       3785   timer.o
        476         52          0          0          0       4153   uart.o
 
     ----------------------------------------------------------------------
-      2442        318        260          0       1536      15694   Object Totals
+      2102        278        256          0       1536      11343   Object Totals
          0          0         16          0          0          0   (incl. Generated)
          2          0          0          0          0          0   (incl. Padding)
 
@@ -803,15 +776,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3076        340        260          0       1632      16130   Grand Totals
-      3076        340        260          0       1632      16130   ELF Image Totals
-      3076        340        260          0          0          0   ROM Totals
+      2736        300        256          0       1632      11799   Grand Totals
+      2736        300        256          0       1632      11799   ELF Image Totals
+      2736        300        256          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3336 (   3.26kB)
+    Total RO  Size (Code + RO Data)                 2992 (   2.92kB)
     Total RW  Size (RW Data + ZI Data)              1632 (   1.59kB)
-    Total ROM Size (Code + RO Data + RW Data)       3336 (   3.26kB)
+    Total ROM Size (Code + RO Data + RW Data)       2992 (   2.92kB)
 
 ==============================================================================
 
